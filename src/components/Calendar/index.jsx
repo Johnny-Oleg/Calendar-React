@@ -21,15 +21,15 @@ export default class Calendar extends Component {
 
     get year() {
         return this.state.date.getFullYear();
-    }
+    };
 
     get month() {
         return this.state.date.getMonth();
-    }
+    };
 
     get day() {
         return this.state.date.getDate();
-    }
+    };
 
     handlePrevMonthButtonClick = () => {
         const date = new Date(this.year, this.month - 1);

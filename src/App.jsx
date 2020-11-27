@@ -11,7 +11,7 @@ const style = {
     top: '100px',
     left: '500px',
   },
-}
+};
 
 class App extends Component {
   state = {
@@ -30,6 +30,6 @@ class App extends Component {
       </div>
     );
   }  
-}
+};
 
 export default App;
