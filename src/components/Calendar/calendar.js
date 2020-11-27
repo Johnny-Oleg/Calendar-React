@@ -29,9 +29,9 @@ export const isLeapYear = year => !((year % 4) || (!(year % 100) && (year % 400)
 
 
 export const getDaysInMonth = date => {
-    const month = date.getMonth(),
-    year = date.getFullYear(),
-    daysInMonth = DAYS_IN_MONTH[month];
+    const month = date.getMonth();
+    const year = date.getFullYear();
+    const daysInMonth = DAYS_IN_MONTH[month];
 
     if (isLeapYear(year) && month === Month.February) {
         return daysInMonth + 1;;
@@ -49,10 +49,10 @@ export const getDayOfWeek = date => {
 };
 
 export const getMonthData = (year, month) => {
-    const result = [],
-    date = new Date(year, month),
-    daysInMonth = getDaysInMonth(date),
-    monthStartsOn = getDayOfWeek(date);
+    const result = [];
+    const date = new Date(year, month);
+    const daysInMonth = getDaysInMonth(date);
+    const monthStartsOn = getDayOfWeek(date);
     let day = 1;
 
     for (let i = 0; i < (daysInMonth + monthStartsOn) / DAYS_IN_WEEK; i++) {
@@ -60,10 +60,10 @@ export const getMonthData = (year, month) => {
 
         for (let j = 0; j < DAYS_IN_WEEK; j++) {
             (i === 0 && j < monthStartsOn) || day > daysInMonth ? 
-            result[i][j] = undefined : 
-            result[i][j] = new Date(year, month, day++);
+                result[i][j] = undefined : 
+                result[i][j] = new Date(year, month, day++);
         }
     };
     
     return result;
-}
+};

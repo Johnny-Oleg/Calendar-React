@@ -33,11 +33,13 @@ export default class Calendar extends Component {
 
     handlePrevMonthButtonClick = () => {
         const date = new Date(this.year, this.month - 1);
+
         this.setState({ date });
     };
 
     handleNextMonthButtonClick = () => {
         const date = new Date(this.year, this.month + 1);
+
         this.setState({ date });
     };
 
@@ -45,38 +47,40 @@ export default class Calendar extends Component {
         const year = this.yearSelect.value;
         const month = this.monthSelect.value;
         const date = new Date(year, month);
+
         this.setState({ date });
     };
 
     handleDayClick = date => {
         this.setState({ selectedDate: date });
+
         this.props.onChange(date);
     };
     
     render() {
-        const { years, monthNames, weekDayNames } = this.props,
-        { currentDate, selectedDate } = this.state,
-        monthData = calendar.getMonthData(this.year, this.month);
+        const { years, monthNames, weekDayNames } = this.props;
+        const { currentDate, selectedDate } = this.state;
+        const monthData = calendar.getMonthData(this.year, this.month);
 
         return (
             <div className="calendar">
                 <header>
                     <button onClick={this.handlePrevMonthButtonClick}>{'<'}</button>
                     <select 
-                    ref={element => this.monthSelect = element}
-                    value={this.month}
-                    onChange={this.handleSelectChange}>
-                        {monthNames.map((month, index) => 
-                            <option key={month} value={index}>{month}</option>
-                        )}
+                        ref={element => this.monthSelect = element}
+                        value={this.month}
+                        onChange={this.handleSelectChange}>
+                            {monthNames.map((month, index) => 
+                                <option key={month} value={index}>{month}</option>
+                            )}
                     </select>
                     <select 
-                    ref={element => this.yearSelect = element}
-                    value={this.year}
-                    onChange={this.handleSelectChange}>
-                        {years.map(year => 
-                            <option key={year} value={year}>{year}</option>
-                        )}
+                        ref={element => this.yearSelect = element}
+                        value={this.year}
+                        onChange={this.handleSelectChange}>
+                            {years.map(year => 
+                                <option key={year} value={year}>{year}</option>
+                            )}
                     </select>
                     <button onClick={this.handleNextMonthButtonClick}>{'>'}</button>
                 </header>
@@ -109,4 +113,4 @@ export default class Calendar extends Component {
             </div>
         );
     }
-}
+};
